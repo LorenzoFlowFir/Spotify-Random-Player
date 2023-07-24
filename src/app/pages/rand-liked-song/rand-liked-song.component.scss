@@ -1,0 +1,17 @@
+#reload-liked {
+  position: relative;
+  border-radius: 500px;
+  font-size: inherit;
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: var(--background-base, #1e6ed7);
+  color: var(--text-base, #f5f5f7);
+}
+
+#tools {
+  width: 12%;
+  display: flex;
+}

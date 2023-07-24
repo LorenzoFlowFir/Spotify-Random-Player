@@ -1,0 +1,128 @@
+@use "@angular/material" as mat;
+
+// Create the angular theme
+@import "@angular/material/theming";
+
+$spotify-green: (
+  50: #e9f8e9,
+  100: #c7f1c7,
+  200: #a2e8a2,
+  300: #7ddf7d,
+  400: #61d861,
+  500: #1db954,
+  // Couleur primaire Spotify
+  600: #1db954,
+  700: #1db954,
+  800: #1db954,
+  900: #1db954,
+  A100: #d4ffd4,
+  A200: #a1ffa1,
+  A400: #6eff6e,
+  A700: #1db954,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff,
+  ),
+);
+
+$spotify-black: (
+  50: #e8e8e8,
+  100: #c6c6c6,
+  200: #a1a1a1,
+  300: #7d7d7d,
+  400: #616161,
+  500: #191414,
+  // Couleur d'accent Spotify
+  600: #191414,
+  700: #191414,
+  800: #191414,
+  900: #191414,
+  A100: #d5d5d5,
+  A200: #a2a2a2,
+  A400: #6f6f6f,
+  A700: #191414,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #ffffff,
+  ),
+);
+
+$warn-colors: (
+  50: #f9e0e0,
+  100: #f0b3b3,
+  200: #e68080,
+  300: #db4d4d,
+  400: #d42626,
+  500: #cc0000,
+  600: #c70000,
+  700: #c00000,
+  800: #b90000,
+  900: #ad0000,
+  A100: #ffd7d7,
+  A200: #ffa4a4,
+  A400: #ff7171,
+  A700: #ff5858,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+@include mat.core();
+
+$primary-palette: mat.define-palette($spotify-green);
+$accent-palette: mat.define-palette($spotify-black);
+$warn-palette: mat.define-palette($warn-colors);
+
+$spotify-typography: mat.define-typography-config(
+  $font-family: Roboto,
+);
+
+$spotify-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary-palette,
+      accent: $accent-palette,
+      warn: $warn-palette,
+    ),
+    typography: $spotify-typography,
+  )
+);
+
+@include mat.all-component-themes($spotify-theme);
