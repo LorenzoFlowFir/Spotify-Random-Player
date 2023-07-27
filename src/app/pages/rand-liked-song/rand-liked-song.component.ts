@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../../app.component';
 import { Track } from 'src/app/models/track.model';
 import { SharedDataService } from 'src/app/services/Common.service';
-import { SpotifyService } from 'src/app/services/RandomLikeSong.service';
+import { RandomLikeService } from 'src/app/services/RandomLikeSong.service';
 
 @Component({
   selector: 'app-rand-liked-song',
@@ -12,8 +12,8 @@ import { SpotifyService } from 'src/app/services/RandomLikeSong.service';
 export class RandLikedSongComponent {
   public playlist: Track[] = [];
   public allTracks: Track[] = [];
-  public loader = this.spotifyService.loader;
+  public loader = this.randomLikeService.loader;
 
   // dans rand-liked-song.component.ts
-  constructor(private spotifyService: SpotifyService) {}
+  constructor(private randomLikeService: RandomLikeService) {}
 }

@@ -7,7 +7,7 @@ import { HeaderComponent } from './pages/header/header.component';
 import { RandLikedSongComponent } from './pages/rand-liked-song/rand-liked-song.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { RandPlaylistComponent } from './pages/rand-playlist/rand-playlist.component';
+import { RandPlaylistComponent } from './rand-playlist/rand-playlist.component';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import SpotifyWebApi from 'spotify-web-api-js';
-import { SpotifyService } from './services/RandomLikeSong.service';
+import { RandomLikeService } from './services/RandomLikeSong.service';
+import { RandomPlaylsiyService } from './services/RandomPlaylist.service';
 
 @Component({
   selector: 'app-root',
@@ -36,7 +37,10 @@ export class AppComponent implements OnInit {
   public connectBtn = document.getElementById('connect');
   public isDisconnected = true;
 
-  constructor(private spotifyService: SpotifyService) {}
+  constructor(
+    private randomlikeService: RandomLikeService,
+    private radomPlaylistService: RandomPlaylsiyService
+  ) {}
 
   public loginWithSpotify() {
     window.location.href = this.authorizeUrl;
@@ -48,11 +52,30 @@ export class AppComponent implements OnInit {
       const accessToken = hashParams.get('access_token');
       this.isDisconnected = false;
 
-      this.spotifyService
+      this.randomlikeService
         .getLikedTracksAndPlayRandomTrack(accessToken)
         .then(() => {
-          this.spotifyService.displayLikedTrack();
+          this.randomlikeService.displayLikedTrack();
         });
+
+      this.radomPlaylistService
+        .getAllPlaylist(accessToken)
+        .then(() => {
+          const playlist = this.radomPlaylistService.getRandomPlaylist(
+            this.radomPlaylistService.allPlaylists
+          );
+          if (playlist) {
+            console.log(
+              `Playlist aléatoire : ${playlist.name} (${playlist.id} )`
+            );
+            this.radomPlaylistService.loadRandomPlaylist(accessToken);
+          } else {
+            console.log('Aucune playlist trouvée');
+          }
+        })
+        .catch((error) =>
+          console.error('Erreur lors de la récupération des playlists :', error)
+        );
     }
   }
 }

@@ -6,10 +6,10 @@ import { AppComponent } from '../app.component';
 @Injectable({
   providedIn: 'root',
 })
-export class SpotifyService {
+export class RandomLikeService {
   public playlist: Track[] = [];
   public allTracks: Track[] = [];
-  public loaderTrack = document.getElementById('loaderTrack');
+  public allPlaylists: Track[] = [];
   public loader = false;
 
   constructor() {}

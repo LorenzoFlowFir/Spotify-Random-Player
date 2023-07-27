@@ -14,7 +14,7 @@
       <!-- Bouton de connexion -->
       <button *ngIf="isDisconnected" id="connect" class="btn btn-primary" (click)="loginWithSpotify()">Se connecter avec
         Spotify</button>
-      <app-rand-liked-song *ngIf="!isDisconnected"></app-rand-liked-song>
+      <app-rand-playlist *ngIf="!isDisconnected"></app-rand-playlist>
     </div>
   </div>
 </body>
