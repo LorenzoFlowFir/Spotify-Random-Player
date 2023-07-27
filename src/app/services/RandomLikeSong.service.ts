@@ -62,10 +62,12 @@ export class SpotifyService {
       offset += 50;
     }
     this.loader = false;
+    document.getElementById('spinner')!.style.display = 'none';
     console.log(`Nombre de titres aimés : ${total}`);
   }
 
   public async displayLikedTrack() {
+    this.playlist = [];
     let randomTrack;
     for (let i = 0; i < 10; i++) {
       randomTrack =
@@ -74,7 +76,14 @@ export class SpotifyService {
     }
 
     const likedTrackDiv = document.getElementById('liked-track');
-    likedTrackDiv!.innerHTML = ''; // Vider les détails de la this.playlist précédente
+
+    if (likedTrackDiv) {
+      likedTrackDiv.innerHTML = ' ';
+    } else {
+      // Gérer le cas où l'élément n'existe pas
+      console.error('Element avec l\'id "liked-track" n\'a pas été trouvé');
+    }
+    // Vider les détails de la this.playlist précédente
 
     for (const music of this.playlist) {
       const p = document.createElement('p');
@@ -116,8 +125,6 @@ export class SpotifyService {
       playButton.appendChild(playImg);
       divtools.appendChild(playButton);
       p.appendChild(divtools);
-
-      likedTrackDiv?.appendChild(p);
 
       likedTrackDiv?.appendChild(p);
     }
