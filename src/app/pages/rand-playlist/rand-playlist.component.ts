@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Track } from 'src/app/models/track.model';
 import { SharedDataService } from 'src/app/services/Common.service';
-import { RandomPlaylsiyService } from '../services/RandomPlaylist.service';
+import { RandomPlaylsiyService } from '../../services/RandomPlaylist.service';
 @Component({
   selector: 'app-rand-playlist',
   templateUrl: './rand-playlist.component.html',
