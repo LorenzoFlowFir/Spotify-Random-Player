@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <app-header></app-header>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<app-header></app-header>
-
-<body>
-  <div class="row">
-    <div class="col-12 text-center mb-5">
-      <!-- Bouton de connexion -->
-      <button *ngIf="isDisconnected" id="connect" class="btn btn-primary" (click)="loginWithSpotify()">Se connecter avec
-        Spotify</button>
-      <!--<app-rand-liked-song *ngIf="!isDisconnected"></app-rand-liked-song>-->
-       <!--<app-rand-playlist *ngIf="!isDisconnected"></app-rand-playlist>-->
-       <app-song-challenge *ngIf="!isDisconnected"></app-song-challenge>
+  <body>
+    <div class="row">
+      <div class="col-12 text-center mb-5" id="main">
+        <!-- Bouton de connexion -->
+        <button
+          *ngIf="isDisconnected"
+          id="connect"
+          class="btn btn-primary"
+          (click)="loginWithSpotify()"
+        >
+          Se connecter avec Spotify
+        </button>
+        <app-rand-liked-song *ngIf="!isDisconnected"></app-rand-liked-song>
+        <app-rand-playlist
+          *ngIf="!isDisconnected"
+          id="randPlaylist"
+        ></app-rand-playlist>
+        <app-song-challenge *ngIf="!isDisconnected"></app-song-challenge>
+      </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
