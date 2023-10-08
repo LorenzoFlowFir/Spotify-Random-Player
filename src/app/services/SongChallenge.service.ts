@@ -12,16 +12,9 @@ export class SongChallengeService {
   public spotifyWebApi = new SpotifyWebApi();
   private cover: string[] = [];
 
-  public getCreationDateFromTitle(title: any): any {
-    // Extrait le numéro du jour à partir du titre
-    let dayNumberMatch = title.match(/Day #(\d+)/);
-    if (dayNumberMatch === null) {
-      return null;
-    }
-    let dayNumber = parseInt(dayNumberMatch[1]);
-
-    // La date de départ ("Day #001") est le 19 août 2021
-    let startDate = new Date('2021-09-20');
+  public getCreationDateFromTitle(dayNumber: number): any {
+    // La date de départ ("Day #001") est le 20 septembre 2021
+    let startDate = new Date('2021-09-21');
     startDate.setDate(startDate.getDate() + (dayNumber - 1)); // Soustraire 1 car "Day #001" est le jour de départ
 
     // Formatte la date de sortie en dd/mm/yyyy
@@ -32,30 +25,29 @@ export class SongChallengeService {
     return `${day}/${month}/${year}`;
   }
 
-  public songChallenge(cover: string[]): void {
+  public songChallenge(cover: string[], titre: string[], day: string[]): void {
     //const userId = 'zwm5ckwimgvmvl1r2ih4xko25'; // Remplacez par l'ID de l'utilisateur
 
     const playlistDiv = document.getElementById('songchallenge-details');
 
     const img = document.createElement('img');
     img.src = cover[0];
-    console.log('trsd', cover);
 
-    //img.alt = `Cover de ${latestPlaylist[0].name}`;
+    img.alt = `Cover de ${titre[0]}`;
     img.style.width = '100%';
     img.style.height = '100%';
     playlistDiv?.appendChild(img);
 
-    //TODO: Titre du challenge
-    //const title = document.createElement('h3');
-    //title.textContent = latestPlaylist[0].name;
-    //playlistDiv?.appendChild(title);
+    //* Titre du challenge
+    const title = document.createElement('h3');
+    title.textContent = titre[0];
+    playlistDiv?.appendChild(title);
 
     //TODO: Date du challenge
-    //const date = document.createElement('h4');
-    //const nom = latestPlaylist[0].name;
-    //date.textContent = this.getCreationDateFromTitle(nom);
-    //playlistDiv?.appendChild(date);
+    const date = document.createElement('h4');
+    const nom = Number(day[0]);
+    date.textContent = this.getCreationDateFromTitle(nom);
+    playlistDiv?.appendChild(date);
 
     const shareBtn = document.createElement('button');
     shareBtn.classList.add('btn');

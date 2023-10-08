@@ -10,6 +10,8 @@ import { DiscordDataService } from '../../services/discord-data.service';
 export class SongChallengeComponent {
   public loader = this.songChallengeService.loader;
   public covers = [];
+  public titre = [];
+  public date = [];
 
   constructor(
     private songChallengeService: SongChallengeService,
@@ -19,9 +21,14 @@ export class SongChallengeComponent {
   ngOnInit(): void {
     this.discordDataService.getDiscordData().subscribe(
       (data) => {
-        this.covers = data;
-        console.log(data);
-        this.songChallengeService.songChallenge(this.covers);
+        this.covers = data.coverUrls;
+        this.titre = data.titre;
+        this.date = data.date;
+        this.songChallengeService.songChallenge(
+          this.covers,
+          this.titre,
+          this.date
+        );
       },
       (error) => console.error(error)
     );
